@@ -3,6 +3,7 @@ package org.pstevens.sonar.stats.test.batch;
 import org.junit.Before;
 import org.junit.Test;
 import org.pstevens.sonar.stats.batch.StatsSensor;
+import org.sonar.api.batch.PostJob;
 import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.TimeMachine;
@@ -21,7 +22,7 @@ public class StatsSensorTest {
 	private SensorContext context = mock(SensorContext.class);
 	
 	
-	private Sensor classUnderTest;
+	private PostJob classUnderTest;
 	
 	@Before
 	public void before() {
@@ -29,13 +30,8 @@ public class StatsSensorTest {
 		classUnderTest = new StatsSensor(settings,timeMachine);
 	}
 	@Test
-	public void shouldExecute_True() {
-		assertTrue(classUnderTest.shouldExecuteOnProject(null));
-	}
-	
-	@Test
 	public void analyse() {
 		settings.appendProperty("sonar.stats.definition", null);
-		classUnderTest.analyse(project, context);
+		classUnderTest.executeOn(project, context);
 	}
 }
