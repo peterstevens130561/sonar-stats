@@ -1,19 +1,15 @@
 package org.pstevens.sonar.stats.test.batch;
 
+import static org.mockito.Mockito.mock;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.pstevens.sonar.stats.batch.StatsSensor;
 import org.sonar.api.batch.PostJob;
-import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.TimeMachine;
 import org.sonar.api.config.Settings;
 import org.sonar.api.resources.Project;
-
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.anyString;
 
 public class StatsSensorTest {
 	private Settings settings;
